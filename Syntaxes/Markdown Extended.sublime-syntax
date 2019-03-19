@@ -143,6 +143,21 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.css
+    - match: '(````|~~~~|{%\s*highlight)\s*(css)\s*((?:linenos\s*)?%})?$'
+      captures:
+        1: punctuation.definition.fenced.markdown
+        2: variable.language.fenced.markdown
+        3: punctuation.definition.fenced.markdown
+      push:
+        - meta_scope: markup.raw.block.markdown markup.raw.block.fenced.markdown
+        - meta_content_scope: source.css
+        - match: '(````|~~~~|{%\s*endhighlight\s*%})\n'
+          captures:
+            1: punctuation.definition.fenced.markdown
+            2: variable.language.fenced.markdown
+            3: punctuation.definition.fenced.markdown
+          pop: true
+        - include: scope:source.css
     - match: '(```|~~~|{%\s*highlight)\s*(csharp)\s*((?:linenos\s*)?%})?$'
       captures:
         1: punctuation.definition.fenced.markdown
@@ -249,6 +264,22 @@ contexts:
           pop: true
         - include: scope:text.html.basic
         - include: scope:text.html.handlebars
+    - match: '(````|~~~~|{%\s*highlight)\s*(hbs|handlebars|html|html5)\s*((?:linenos\s*)?%})?$'
+      captures:
+        1: punctuation.definition.fenced.markdown
+        2: variable.language.fenced.markdown
+        3: punctuation.definition.fenced.markdown
+      push:
+        - meta_scope: markup.raw.block.markdown markup.raw.block.fenced.markdown
+        - meta_content_scope: text.html.basic
+        - match: '(````|~~~~|{%\s*endhighlight\s*%})\n'
+          captures:
+            1: punctuation.definition.fenced.markdown
+            2: variable.language.fenced.markdown
+            3: punctuation.definition.fenced.markdown
+          pop: true
+        - include: scope:text.html.basic
+        - include: scope:text.html.handlebars
     - match: '(```|~~~|{%\s*highlight)\s*(ini)\s*((?:linenos\s*)?%})?$'
       captures:
         1: punctuation.definition.fenced.markdown
@@ -294,6 +325,21 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.js
+    - match: '(````|~~~~|{%\s*highlight)\s*(javascript|js)\s*((?:linenos\s*)?%})?$'
+      captures:
+        1: punctuation.definition.fenced.markdown
+        2: variable.language.fenced.markdown
+        3: punctuation.definition.fenced.markdown
+      push:
+        - meta_scope: markup.raw.block.markdown markup.raw.block.fenced.markdown
+        - meta_content_scope: source.js
+        - match: '(````|~~~~|{%\s*endhighlight\s*%})\n'
+          captures:
+            1: punctuation.definition.fenced.markdown
+            2: variable.language.fenced.markdown
+            3: punctuation.definition.fenced.markdown
+          pop: true
+        - include: scope:source.js
     - match: '(```|~~~|{%\s*highlight)\s*(json)\s*((?:linenos\s*)?%})?$'
       captures:
         1: punctuation.definition.fenced.markdown
@@ -303,6 +349,21 @@ contexts:
         - meta_scope: markup.raw.block.markdown markup.raw.block.fenced.markdown
         - meta_content_scope: source.json
         - match: '(```|~~~|{%\s*endhighlight\s*%})\n'
+          captures:
+            1: punctuation.definition.fenced.markdown
+            2: variable.language.fenced.markdown
+            3: punctuation.definition.fenced.markdown
+          pop: true
+        - include: scope:source.json
+    - match: '(````|~~~~|{%\s*highlight)\s*(json)\s*((?:linenos\s*)?%})?$'
+      captures:
+        1: punctuation.definition.fenced.markdown
+        2: variable.language.fenced.markdown
+        3: punctuation.definition.fenced.markdown
+      push:
+        - meta_scope: markup.raw.block.markdown markup.raw.block.fenced.markdown
+        - meta_content_scope: source.json
+        - match: '(````|~~~~|{%\s*endhighlight\s*%})\n'
           captures:
             1: punctuation.definition.fenced.markdown
             2: variable.language.fenced.markdown
@@ -569,6 +630,21 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.sass
+    - match: '(````|~~~~|{%\s*highlight)\s*(sass)\s*((?:linenos\s*)?%})?$'
+      captures:
+        1: punctuation.definition.fenced.markdown
+        2: variable.language.fenced.markdown
+        3: punctuation.definition.fenced.markdown
+      push:
+        - meta_scope: markup.raw.block.markdown markup.raw.block.fenced.markdown
+        - meta_content_scope: source.sass
+        - match: '(````|~~~~|{%\s*endhighlight\s*%})\n'
+          captures:
+            1: punctuation.definition.fenced.markdown
+            2: variable.language.fenced.markdown
+            3: punctuation.definition.fenced.markdown
+          pop: true
+        - include: scope:source.sass
     - match: '(```|~~~|{%\s*highlight)\s*(scala)\s*((?:linenos\s*)?%})?$'
       captures:
         1: punctuation.definition.fenced.markdown
@@ -593,6 +669,21 @@ contexts:
         - meta_scope: markup.raw.block.markdown markup.raw.block.fenced.markdown
         - meta_content_scope: source.scss
         - match: '(```|~~~|{%\s*endhighlight\s*%})\n'
+          captures:
+            1: punctuation.definition.fenced.markdown
+            2: variable.language.fenced.markdown
+            3: punctuation.definition.fenced.markdown
+          pop: true
+        - include: scope:source.scss
+    - match: '(````|~~~~|{%\s*highlight)\s*(scss)\s*((?:linenos\s*)?%})?$'
+      captures:
+        1: punctuation.definition.fenced.markdown
+        2: variable.language.fenced.markdown
+        3: punctuation.definition.fenced.markdown
+      push:
+        - meta_scope: markup.raw.block.markdown markup.raw.block.fenced.markdown
+        - meta_content_scope: source.scss
+        - match: '(````|~~~~|{%\s*endhighlight\s*%})\n'
           captures:
             1: punctuation.definition.fenced.markdown
             2: variable.language.fenced.markdown
@@ -712,6 +803,19 @@ contexts:
       push:
         - meta_scope: markup.raw.block.markdown markup.raw.block.fenced.markdown
         - match: '(```|~~~|{%\s*endhighlight\s*%})\n'
+          captures:
+            1: punctuation.definition.fenced.markdown
+            2: variable.language.fenced.markdown
+            3: punctuation.definition.fenced.markdown
+          pop: true
+    - match: '(````|~~~~|{%\s*highlight)\s*(\w*)\s*((?:linenos\s*)?%})?$'
+      captures:
+        1: punctuation.definition.fenced.markdown
+        2: variable.language.fenced.markdown
+        3: punctuation.definition.fenced.markdown
+      push:
+        - meta_scope: markup.raw.block.markdown markup.raw.block.fenced.markdown
+        - match: '(````|~~~~|{%\s*endhighlight\s*%})\n'
           captures:
             1: punctuation.definition.fenced.markdown
             2: variable.language.fenced.markdown
